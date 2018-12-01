@@ -1,0 +1,14 @@
+<p *ngIf="systemError">{{systemErrorMessage}}</p>
+<div *ngIf="isLoggedIn && !systemError">
+  <p>
+    {{userDetail.name}}
+  </p>
+  <p>Note: Above user details returned by async call.</p>
+</div>
+
+<div *ngIf="!isLoggedIn && !systemError">
+  <p>
+    User is Not logged In.
+  </p>
+</div>
+
