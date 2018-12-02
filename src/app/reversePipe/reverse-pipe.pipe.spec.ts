@@ -1,9 +1,9 @@
-import { ReversePipePipe } from './reverse-pipe.pipe';
+import { ReversePipe } from './reverse-value.pipe';
 
 // Isolated test case.
-describe('ReversePipePipe', () => {
+describe('ReversePipe', () => {
   it('create an instance', () => {
-    const pipe = new ReversePipePipe();
+    const pipe = new ReversePipe();
     expect(pipe).toBeTruthy();
     expect(pipe.transform('olleh')).toBe('hello');
   });

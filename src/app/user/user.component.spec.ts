@@ -1,7 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 
 import { UserComponent } from './user.component';
-import { setupMaster } from 'cluster';
 import { UserService } from './user.service';
 
 describe('UserComponent', () => {
@@ -11,8 +10,8 @@ describe('UserComponent', () => {
       declarations: [UserComponent]
     });
 
-    // compileComponents(); - compileComponent is not required when using weback why? When application is
-    // created with CLI  and uses Web pack. it uses different workflow and build process.
+    // compileComponents(); - compileComponent is not required when using weback. why? When application is
+    // created with CLI and uses Web pack. it uses different workflow and build process.
   }));
 
   describe(':', () => {

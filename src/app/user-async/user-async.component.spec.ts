@@ -1,22 +1,22 @@
-import { async, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { UserAsyncComponent } from './user-async.component';
 import { UserAsyncService } from './user-async.service';
-import { detectChanges } from '@angular/core/src/render3';
 import { Observable, Observer } from 'rxjs';
 
-
-describe('User Component:', () => {
-
+describe('User Async Component:', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [UserAsyncComponent]
     });
   });
 
+  describe(':', () => {
   function setup() {
     const fixture = TestBed.createComponent(UserAsyncComponent);
     const app = fixture.debugElement.componentInstance;
-    const userAsyncService = fixture.debugElement.injector.get(UserAsyncService);
+    const userAsyncService = fixture.debugElement.injector.get(
+      UserAsyncService
+    );
 
     return { fixture, app, userAsyncService };
   }
@@ -29,10 +29,12 @@ describe('User Component:', () => {
   it('should display user name', fakeAsync(() => {
     const { fixture, app, userAsyncService } = setup();
     const mockUser = { name: 'Mannie' };
-    spyOn(userAsyncService, 'getUserDetails').and.returnValue(Observable.create((observer: Observer<{ name: string }>) => {
-      observer.next(mockUser);
-      return observer;
-    }));
+    spyOn(userAsyncService, 'getUserDetails').and.returnValue(
+      Observable.create((observer: Observer<{ name: string }>) => {
+        observer.next(mockUser);
+        return observer;
+      })
+    );
 
     tick();
 
@@ -44,9 +46,11 @@ describe('User Component:', () => {
 
   it('should display a system error', fakeAsync(() => {
     const { app, fixture, userAsyncService } = setup();
-    spyOn(userAsyncService, 'getUserDetails').and.returnValue(Observable.create((observer: Observer<{ name: string }>) => {
-      return observer.error('something went wrong');
-    }));
+    spyOn(userAsyncService, 'getUserDetails').and.returnValue(
+      Observable.create((observer: Observer<{ name: string }>) => {
+        return observer.error('something went wrong');
+      })
+    );
 
     tick();
     fixture.detectChanges();
@@ -55,5 +59,5 @@ describe('User Component:', () => {
     const systemError = userAsyncElement.querySelector('p');
     expect(systemError.textContent).toBe('something went wrong');
   }));
-
+});
 });

@@ -11,10 +11,9 @@ export class UserComponent implements OnInit {
   user: { name: string };
   isUserLoggedIn = false;
   userDetail;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-
     this.userDetail = this.userService.getUser();
     if (this.userDetail) {
       this.user = this.userDetail;
@@ -22,7 +21,5 @@ export class UserComponent implements OnInit {
     } else {
       this.isUserLoggedIn = false;
     }
-
   }
-
 }

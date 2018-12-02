@@ -9,24 +9,23 @@ import { Observable } from 'rxjs';
   providers: [UserAsyncService]
 })
 export class UserAsyncComponent implements OnInit {
-
   isLoggedIn = false;
   user: { name: string };
   userDetail;
   systemError = false;
   systemErrorMessage = '';
-  constructor(private userAsyncService: UserAsyncService) { }
+  constructor(private userAsyncService: UserAsyncService) {}
 
   ngOnInit() {
-
-    this.userAsyncService = this.userAsyncService.getUserDetails().subscribe((respone: string) => {
-      this.userDetail = respone;
-      this.isLoggedIn = true;
-    }, (error: string) => {
-      this.systemError = true;
-      this.systemErrorMessage = error;
-    });
-
+    this.userAsyncService = this.userAsyncService.getUserDetails().subscribe(
+      (respone: string) => {
+        this.userDetail = respone;
+        this.isLoggedIn = true;
+      },
+      (error: string) => {
+        this.systemError = true;
+        this.systemErrorMessage = error;
+      }
+    );
   }
-
 }

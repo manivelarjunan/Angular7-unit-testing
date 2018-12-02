@@ -8,12 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Angular7-unit-testing!';
 
-  constructor() {
-
-  }
-  ngOnInit() {
-
-  }
-
-
+  constructor() {}
+  ngOnInit() {}
 }
