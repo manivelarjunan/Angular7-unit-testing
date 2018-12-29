@@ -21,8 +21,9 @@ describe('Shared service:', () => {
 
       it('should call the google\'s map data', () => {
         const { sharedService, httpTestingController } = setup();
+        const mockGoogleMapData = {id: 1, country : 'United states of america', zipcode: '56743'};
         sharedService.getGoogleMapData().subscribe(data => {
-          expect(data.mapData).toBe('USA');
+          expect(data.mapData).toEqual(mockGoogleMapData);
         });
 
         const req = httpTestingController.expectOne('https:www.google.com/googleMapData');
@@ -30,7 +31,7 @@ describe('Shared service:', () => {
         expect(req.request.method).toBe('GET');
 
         req.flush({
-          mapData: 'USA'
+          mapData: mockGoogleMapData
         });
       });
 
